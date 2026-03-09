@@ -69,3 +69,21 @@ class Book:
                     max_page = page
 
             return max_page
+
+    def __str__(self):
+        if self.rating == Book.EXCELLENT:
+            rating_str = "excellent"
+        elif self.rating == Book.GOOD:
+            rating_str = "good"
+        elif self.rating == Book.BAD:
+            rating_str = "bad"
+        else:
+            rating_str = "unrated"
+
+        return (
+            f"ISBN: {self.isbn}\n"
+            f"Title: {self.title}\n"
+            f"Author: {self.author}\n"
+            f"Pages: {self.pages}\n"
+            f"Rating: {rating_str}"
+        )
