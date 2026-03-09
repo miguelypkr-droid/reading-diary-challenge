@@ -42,3 +42,30 @@ class Book:
 
     def get_notes_of_page(self, page):
         notes_page = []
+
+        for note in self.notes:
+            if note.page == page:
+                notes_page.append(note)
+
+        return notes_page
+
+    def page_with_most_notes(self):
+        if not self.notes:
+            return -1
+
+        count_pages = {}
+
+        for note in self.notes:
+            if note.page not in count_pages:
+                count_pages[note.page] = 0
+            count_pages[note.page] += 1
+
+            max_page = -1
+            max_notes = 0
+
+            for page, count in count_pages.items():
+                if count > max_notes:
+                    max_notes = count
+                    max_page = page
+
+            return max_page
